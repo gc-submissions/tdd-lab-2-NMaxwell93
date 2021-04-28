@@ -65,4 +65,20 @@ describe("ChangeHandler", function () {
     vendingMachine.insertCoin("quarter");
     expect(vendingMachine.cashTendered).toBe(41);
   });
+  // boolean test. is cash tendered more or less than amount due
+  test("amount paid is more than due", function () {
+    const vendingMachine = new ChangeHandler(10);
+    vendingMachine.insertCoin("quarter");
+    expect(vendingMachine.isPaymentSufficient).toBeTruthy();
+  });
+  test("return false", function () {
+    const vendingMachine = new ChangeHandler(100);
+    vendingMachine.insertCoin("quarter");
+    expect(vendingMachine.isPaymentSufficient).toBeTruthy();
+  });
+  test("is equal", function () {
+    const vendingMachine = new ChangeHandler(25);
+    vendingMachine.insertCoin("quarter");
+    expect(vendingMachine.isPaymentSufficient).toBeTruthy();
+  });
 });
