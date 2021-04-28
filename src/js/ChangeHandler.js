@@ -31,6 +31,7 @@ class ChangeHandler {
    */
   isPaymentSufficient() {
     // TODO
+    return (this.cashTendered >= this.amountDue) ? true : false
   }
 
   giveChange() {
