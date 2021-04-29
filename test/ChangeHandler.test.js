@@ -18,18 +18,21 @@ describe("ChangeHandler", function () {
     vendingMachine.insertCoin("quarter");
     expect(vendingMachine.cashTendered).toBe(25);
   });
+
   //increases cash tendered by 10 for dime
   test("increases cash tendered by 10", function () {
     const vendingMachine = new ChangeHandler();
     vendingMachine.insertCoin("dime");
     expect(vendingMachine.cashTendered).toBe(10);
   });
+
   //increases cash tendered by 5 for nickel
   test("increases cash tendered by 5", function () {
     const vendingMachine = new ChangeHandler();
     vendingMachine.insertCoin("nickel");
     expect(vendingMachine.cashTendered).toBe(5);
   });
+
   //increases cash tendered by 1 for penny
   test("increases cash tendered by 1", function () {
     const vendingMachine = new ChangeHandler();
@@ -50,6 +53,7 @@ describe("ChangeHandler", function () {
     vendingMachine.insertCoin("dime");
     expect(vendingMachine.cashTendered).toBe(35);
   });
+
   test("increases cash tendered by 16", function () {
     const vendingMachine = new ChangeHandler();
     vendingMachine.insertCoin("nickel");
@@ -57,6 +61,7 @@ describe("ChangeHandler", function () {
     vendingMachine.insertCoin("penny");
     expect(vendingMachine.cashTendered).toBe(16);
   });
+
   test("increases cash tendered by 41", function () {
     const vendingMachine = new ChangeHandler();
     vendingMachine.insertCoin("nickel");
@@ -66,19 +71,25 @@ describe("ChangeHandler", function () {
     expect(vendingMachine.cashTendered).toBe(41);
   });
   // boolean test. is cash tendered more or less than amount due
+
   test("amount paid is more than due", function () {
     const vendingMachine = new ChangeHandler(10);
     vendingMachine.insertCoin("quarter");
-    expect(vendingMachine.isPaymentSufficient).toBeTruthy();
+    const result = vendingMachine.isPaymentSufficient();
+    expect(result).toBe(true);
   });
+
   test("return false", function () {
     const vendingMachine = new ChangeHandler(100);
     vendingMachine.insertCoin("quarter");
-    expect(vendingMachine.isPaymentSufficient).toBeTruthy();
+    const result = vendingMachine.isPaymentSufficient();
+    expect(result).toBe(false);
   });
+
   test("is equal", function () {
     const vendingMachine = new ChangeHandler(25);
     vendingMachine.insertCoin("quarter");
-    expect(vendingMachine.isPaymentSufficient).toBeTruthy();
+    const result = vendingMachine.isPaymentSufficient();
+    expect(result).toBe(true);
   });
 });
